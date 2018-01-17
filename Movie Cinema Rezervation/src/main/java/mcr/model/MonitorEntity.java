@@ -1,17 +1,28 @@
 package mcr.model;
 
-public class Monitor {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="monitor")
+public class MonitorEntity {
 	
+	@Id @GeneratedValue
+	@Column(name="id")
 	private int id;
 	
+	@Column(name="name")
 	private String name;
 
-	public Monitor() {
+	public MonitorEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Monitor(String name) {
+	public MonitorEntity(String name) {
 		super();
 		this.name = name;
 	}

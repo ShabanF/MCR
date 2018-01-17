@@ -2,30 +2,39 @@ package mcr.model;
 
 import java.time.LocalDate;
 
-public class User extends Person{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user")
+public class User extends PersonEntity{
 	
+	@Id @GeneratedValue
+	@Column(name="person_id")
 	private int id;
 	
+	@Column(name="email")
 	private String email;
 	
+	@Column(name="password")
 	private String password;
 	
+	@Column(name="birthdate")
 	private LocalDate birthdate;
-	
-	
 
 	public User() {
 		super();
 	}
 
-	public User(Person person, String email, String password, LocalDate birthdate) {
-		super(person.getName(), person.getLastname(), person.getRole());
+	public User(PersonEntity user, String email, String password, LocalDate birthdate) {
+		super(user.getName(), user.getLastname(), user.getRole());
 		this.email = email;
 		this.password = password;
 		this.birthdate = birthdate;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -43,13 +52,9 @@ public class User extends Person{
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public String getPassword() {
 		return password;
@@ -61,14 +66,10 @@ public class User extends Person{
 		this.password = password;
 	}
 
-
-
 	public LocalDate getBirthdate() {
 		return birthdate;
 	}
-
-
-
+	
 	public void setBirthdate(LocalDate birthdate) {
 		this.birthdate = birthdate;
 	}

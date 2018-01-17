@@ -1,17 +1,28 @@
 package mcr.model;
 
-public class Genre {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="genre")
+public class GenreEntity {
 	
+	@Id @GeneratedValue
+	@Column(name="id")
 	private int id;
 	
+	@Column(name="name")
 	private String name;
 
-	public Genre() {
+	public GenreEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Genre(String name) {
+	public GenreEntity(String name) {
 		super();
 		this.name = name;
 	}

@@ -1,21 +1,37 @@
 package mcr.model;
 
-public class Person {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="person")
+public class PersonEntity {
 	
+	@Id @GeneratedValue
+	@Column(name="id")
 	private int id;
 	
+	@Column(name="name")
 	private String name;
 	
+	@Column(name="lastname")
 	private String lastname;
 	
-	private Role role;
+	@ManyToOne
+	@JoinColumn(name="role_id")
+	private RoleEntity role;
 
-	public Person() {
+	public PersonEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Person(String name, String lastname, Role role) {
+	public PersonEntity(String name, String lastname, RoleEntity role) {
 		super();
 		this.name = name;
 		this.lastname = lastname;
@@ -46,14 +62,12 @@ public class Person {
 		this.lastname = lastname;
 	}
 
-	public Role getRole() {
+	public RoleEntity getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(RoleEntity role) {
 		this.role = role;
 	}
-	
-	
 	
 }

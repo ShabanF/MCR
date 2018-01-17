@@ -1,59 +1,36 @@
 package mcr.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="seat")
 public class Seat {
 	
-	private int id;
+	private int seatNumber;
 	
-	private int row;
-	
-	private int seatNr;
-	
-	private Monitor monitor;
+	private boolean free;
 
 	public Seat() {
 		super();
+		this.free = true;
 		// TODO Auto-generated constructor stub
 	}
 
-	public Seat(int row, int seatNr, Monitor monitor) {
-		super();
-		this.row = row;
-		this.seatNr = seatNr;
-		this.monitor = monitor;
+	public int getSeatNumber() {
+		return seatNumber;
 	}
 
-	public int getId() {
-		return id;
+	public void setSeatNumber(int seatNumber) {
+		this.seatNumber = seatNumber;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public boolean isFree() {
+		return free;
 	}
 
-	public int getRow() {
-		return row;
+	public void setFree(boolean free) {
+		this.free = free;
 	}
-
-	public void setRow(int row) {
-		this.row = row;
-	}
-
-	public int getSeatNr() {
-		return seatNr;
-	}
-
-	public void setSeatNr(int seatNr) {
-		this.seatNr = seatNr;
-	}
-
-	public Monitor getMonitor() {
-		return monitor;
-	}
-
-	public void setMonitor(Monitor monitor) {
-		this.monitor = monitor;
-	}
-	
-	
 
 }

@@ -1,23 +1,40 @@
 package mcr.model;
 
-public class Movie {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="movie")
+public class MovieEntity {
 	
+	@Id @GeneratedValue
+	@Column(name="id")
 	private int id;
 	
+	@Column(name="title")
 	private String title;
 	
+	@Column(name="director")
 	private String director;
 	
-	private Genre genre;
+	@ManyToOne
+	@JoinColumn(name="genre_id")
+	private GenreEntity genre;
 	
+	@Column(name="description")
 	private String description;
 
-	public Movie() {
+	public MovieEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Movie(String title, String director, Genre genre, String description) {
+	public MovieEntity(String title, String director, GenreEntity genre, String description) {
 		super();
 		this.title = title;
 		this.director = director;
@@ -49,11 +66,11 @@ public class Movie {
 		this.director = director;
 	}
 
-	public Genre getGenre() {
+	public GenreEntity getGenre() {
 		return genre;
 	}
 
-	public void setGenre(Genre genre) {
+	public void setGenre(GenreEntity genre) {
 		this.genre = genre;
 	}
 

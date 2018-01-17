@@ -1,17 +1,28 @@
 package mcr.model;
 
-public class Role {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="role")
+public class RoleEntity {
 	
+	@Id @GeneratedValue
+	@Column(name="id")
 	private int id;
 	
+	@Column(name="rolename")
 	private String roleName;
 
-	public Role() {
+	public RoleEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Role(String roleName) {
+	public RoleEntity(String roleName) {
 		super();
 		this.roleName = roleName;
 	}
