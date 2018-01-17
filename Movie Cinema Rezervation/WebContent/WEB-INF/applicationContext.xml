@@ -32,7 +32,14 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-			
+				<beans:value>mcr.model.UserEntity</beans:value>
+				<beans:value>mcr.model.PersonEntity</beans:value>
+				<beans:value>mcr.model.GenreEntity</beans:value>
+				<beans:value>mcr.model.MonitorEntity</beans:value>
+				<beans:value>mcr.model.MovieEntity</beans:value>
+				<beans:value>mcr.model.PersonEntity</beans:value>
+				<beans:value>mcr.model.RezervationEntity</beans:value>
+				<beans:value>mcr.model.UserEntity</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
