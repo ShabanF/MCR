@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="user")
-public class User extends PersonEntity{
+public class UserEntity extends PersonEntity{
 	
 	@Id @GeneratedValue
 	@Column(name="person_id")
@@ -25,11 +25,11 @@ public class User extends PersonEntity{
 	@Column(name="birthdate")
 	private LocalDate birthdate;
 
-	public User() {
+	public UserEntity() {
 		super();
 	}
 
-	public User(PersonEntity user, String email, String password, LocalDate birthdate) {
+	public UserEntity(PersonEntity user, String email, String password, LocalDate birthdate) {
 		super(user.getName(), user.getLastname(), user.getRole());
 		this.email = email;
 		this.password = password;
@@ -40,13 +40,9 @@ public class User extends PersonEntity{
 		return id;
 	}
 
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 
 	public String getEmail() {
 		return email;
@@ -59,8 +55,6 @@ public class User extends PersonEntity{
 	public String getPassword() {
 		return password;
 	}
-
-
 
 	public void setPassword(String password) {
 		this.password = password;
