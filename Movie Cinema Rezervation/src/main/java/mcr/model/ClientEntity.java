@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="client")
-public class ClientEntity extends UserEntity{
+public class ClientEntity {
 	
 	@Id @GeneratedValue
 	@Column(name="id_user")
@@ -21,9 +21,7 @@ public class ClientEntity extends UserEntity{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public ClientEntity(UserEntity user, int capital) {
-		super((PersonEntity) user, user.getEmail(), user.getPassword(), user.getBirthdate());
 		this.capital = capital;
 	}
 

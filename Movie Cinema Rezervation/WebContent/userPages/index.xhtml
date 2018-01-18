@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>MCR</title>
+</h:head>
+
+<h:body id="top">
+
+	<h:form>
+
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="Email: "></h:outputLabel>
+			<h:inputText value="#{testBean.email}"></h:inputText>
+
+			<h:outputLabel value="Password: "></h:outputLabel>
+			<h:inputText value="#{testBean.password}"></h:inputText>
+
+			<h:commandButton value="Test" actionListener="#{testBean.logIn()}"></h:commandButton>
+
+		</h:panelGrid>
+
+	</h:form>
+
+</h:body>
+</html>

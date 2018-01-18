@@ -14,7 +14,7 @@ public class RoleEntity {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="rolename")
+	@Column(name="role_name")
 	private String roleName;
 
 	public RoleEntity() {
@@ -42,7 +42,6 @@ public class RoleEntity {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	
 	
 
 }
