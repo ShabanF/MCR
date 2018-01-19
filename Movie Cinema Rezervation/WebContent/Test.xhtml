@@ -14,21 +14,11 @@
 
 <h:body>
 
-	<h:outputStylesheet library="css" name="user.css" />
-
-	<div class="bgded overlay"
-		style="background-image: url('../resources/images/cinema-21.jpg');">
-		<div class="wrapper row1">
-			<ui:include src="../components/header.xhtml" />
-		</div>
-
-	</div>
-
-	<div></div>
-
-	<div class="wrapper row4 bgded" style="background: #cc0000">
-		<ui:include src="../components/footer.xhtml" />
-	</div>
+	<h:inputText id="someNumber" value="#{testBean.someNumber}"
+		required="true" requiredMessage="You have to enter a number"
+		validatorMessage="Number has to be minimum 10 and maximum 100">
+		<f:validateLongRange minimum="10" maximum="100" />
+	</h:inputText>
 
 </h:body>
 </html>

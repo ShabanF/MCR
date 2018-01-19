@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+.login {
+	background: transparent !important;
+	color: white !important;
+	margin: 0 auto;
+	text-shadow: none !important;
+}
+
+.logText {
+	
+}
+
+.logText:hover {
+	color: #cc0000;
+}
+
+.logText :active {
+	color: #990000;
+}
+
+.center-align {
+	text-align: center;
+}
+
+.ui-widget-header {
+	color: #cc0000;
+	background: white;
+	text-shadow: none !important;
+}
+
+.ui-widget-content {
+	border: 1px solid #cc0000;
+}
+
+.ui-shadow{
+	-webkit-box-shadow: 0 5px 10px #cc0000;
+}
+
+.dialog {
+	color: white;
+	background: #cc0000;
+	text-align: center;
+}

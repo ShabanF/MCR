@@ -58,16 +58,33 @@ public class UserDAOImpl implements UserDAO {
 
 		return userList;
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserEntity> getUserByFields(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = this.sessionFactory.getCurrentSession();
+		
+		String selectQuery = "select id from UserEntity where email= :email";
+		
+		Query<UserEntity> query = session.createQuery(selectQuery);
+		
+		query.setParameter("email", email);
+		
+		List<UserEntity> userList = query.list();
+		
+		if (userList.isEmpty()) {
+			return new ArrayList<>();
+		}
+
+		return userList;
 	}
 
 	@Override
 	public void addUser(UserEntity user) {
-		// TODO Auto-generated method stub
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		
+		session.save(user);
 	}
 
 	@Override

@@ -42,9 +42,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public boolean addUser(UserEntity user) {
-		// TODO Auto-generated method stub
+		
+		List<UserEntity> userList = this.userDAO.getUserByFields(user.getEmail());
+		
+		if (userList.isEmpty()) {
+			this.userDAO.addUser(user);
+			return true;
+		}
+		
 		return false;
+		
 	}
 
 	@Override

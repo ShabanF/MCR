@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15162706134070" configfile="/Movie Cinema Rezervation/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf151627220953452" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf151627231248955 pf151627250700563 pf151627255924365" path="/userPages/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf151627231248958" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf151627231248955" path="/userPages/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="userPages/success.xhtml" id="pf151627250700564" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf151627250700563" path="/userPages/success.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="adminPages/adminIndex.xhtml" id="pf151627255924366" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf151627323348371" inlinks="pf151627255924365" path="/adminPages/adminIndex.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="./userPages/index.xhtml" id="pf151627323348372" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf151627323348371" path="./userPages/index.xhtml"/>
+  <links id="pf151627231248955" target="pf151627231248958" source="pf151627220953452" outcome="fail"/>
+  <links id="pf151627250700563" target="pf151627250700564" source="pf151627220953452" outcome="client" redirect="true"/>
+  <links id="pf151627255924365" target="pf151627255924366" source="pf151627220953452" outcome="admin" redirect="true"/>
+  <links id="pf151627323348371" target="pf151627323348372" source="pf151627255924366" outcome="logout" redirect="true"/>
+</pageflow:Pageflow>
