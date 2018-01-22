@@ -7,6 +7,11 @@
 	text-shadow: none !important;
 }
 
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield{
+	color: #cc0000;
+	font-weight: bold;
+}
+
 .logText {
 	
 }
@@ -33,8 +38,12 @@
 	border: 1px solid #cc0000;
 }
 
-.ui-shadow{
+.ui-shadow {
 	-webkit-box-shadow: 0 5px 10px #cc0000;
+}
+
+tbody, tr, td, input {
+	font-weight: bold;
 }
 
 .dialog {

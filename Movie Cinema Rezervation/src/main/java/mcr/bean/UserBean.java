@@ -8,10 +8,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import mcr.filters.SessionUtils;
 import mcr.model.UserEntity;
 import mcr.service.RoleService;
 import mcr.service.UserService;
+import mcr.service.dto.User;
 
 @Named
 @SessionScoped
@@ -25,9 +28,9 @@ public class UserBean implements Serializable {
 
 	private String passwordConfirmation;
 
-	private UserEntity user;
+	private User user;
 
-	private UserEntity newUser;
+	private User newUser;
 
 	@Inject
 	private UserService userService;
@@ -37,62 +40,35 @@ public class UserBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		this.newUser = new UserEntity();
+		this.newUser = new User();
 	}
 
 	public String LogIn() {
 		this.user = this.userService.logIn(this.email, this.password);
 
-		if (this.user != null) {
-			HttpSession session = SessionUtils.getSession();
+		return this.userService.getUserRole(user);
 
-			if (this.user.getRole().getId() == 2) {
-
-				session.setAttribute("admin", this.user);
-
-				return "admin";
-			}
-
-			else if (this.user.getRole().getId() == 1) {
-
-				session.setAttribute("client", this.user);
-				return "client";
-			}
-		}
-		
-		System.out.println("Fail");
-
-		return "fail";
 	}
 
 	public String Register() {
 
-		if (this.newUser.getPassword().equals(this.passwordConfirmation)) {
-			this.newUser.setRole(this.roleService.getRoleById(1));
-
-			if (this.userService.addUser(this.newUser)) {
-				System.out.println("Klienti u regjistrua");
-				return "client";
-			} else {
-				System.out.println("Useri ekziston!");
-			}
-		} else {
-			System.out.println("Passwordi nuk perputhet!");
-		}
+		/*
+		 * 
+		 * if (this.userService.doPasswordsMatch(password, passwordConfirmation)) {
+		 * this.newUser.setRole(this.roleService.getRoleById(1));
+		 * 
+		 * if (this.userService.addUser(this.newUser)) { return "client"; } else { } }
+		 * else { System.out.println("Passwordi nuk perputhet!"); }
+		 * 
+		 */
 
 		return "fail";
 	}
 
 	public String LogOut() {
-		HttpSession session = SessionUtils.getSession();
-		if (this.user.getRole().getId() == 2) {
-			session.removeAttribute("admin");
-			this.user = null;
-			return "logout";
-		}
-		session.removeAttribute("client");
+		int role_id = this.user.getRole_id();
 		this.user = null;
-		return "index?faces-redirect=true";
+		return this.userService.logOut(role_id);
 	}
 
 	public String getEmail() {
@@ -111,28 +87,28 @@ public class UserBean implements Serializable {
 		this.password = password;
 	}
 
-	public UserEntity getUser() {
-		return user;
-	}
-
-	public void setUser(UserEntity user) {
-		this.user = user;
-	}
-
-	public UserEntity getNewUser() {
-		return newUser;
-	}
-
-	public void setNewUser(UserEntity newUser) {
-		this.newUser = newUser;
-	}
-
 	public String getPasswordConfirmation() {
 		return passwordConfirmation;
 	}
 
 	public void setPasswordConfirmation(String passwordConfirmation) {
 		this.passwordConfirmation = passwordConfirmation;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public User getNewUser() {
+		return newUser;
+	}
+
+	public void setNewUser(User newUser) {
+		this.newUser = newUser;
 	}
 
 }

@@ -28,22 +28,25 @@
 
 					<p:dialog id="logDialog" header="Hyr | Ju lutem fusni kredencialet"
 						widgetVar="logInDialog" minHeight="40">
-						<h:form styleClass="dialog">
+						<h:form id="logInForm" styleClass="dialog">
+							<p:message id="emailMessage" for="email"></p:message>
 							<h:panelGrid id="inputPanel" columns="2" cellpadding="10">
 								<h:outputLabel value="Email: "></h:outputLabel>
-								<h:inputText value="#{userBean.email}" required="true"
-									requiredMessage="Emaili nuk mund te lihet bosh"
+								<p:inputText id="email" value="#{userBean.email}"
+									styleClass="redText" required="true"
+									requiredMessage="Emaili nuk mund te lihet bosh!"
 									validatorMessage="Emaili duhet te jete i formes ...@...">
 									<f:validateRegex pattern="(.+@.+\.[a-zA-Z]+)?" />
-								</h:inputText>
+								</p:inputText>
 								<h:outputLabel value="Password: "></h:outputLabel>
-								<h:inputSecret value="#{userBean.password}"></h:inputSecret>
+								<p:password id="password" value="#{userBean.password}"
+									styleClass="redText"></p:password>
 
 							</h:panelGrid>
 
 							<h:panelGrid columns="1">
 								<p:commandButton action="#{userBean.LogIn()}" value="Hyr"
-									styleClass="login"></p:commandButton>
+									styleClass="login" update="logInForm"></p:commandButton>
 								<p:commandLink
 									oncomplete="PF('logInDialog').hide(); PF('RegisterDialog').show();"
 									title="Regjistrohu">
@@ -57,29 +60,41 @@
 					<p:dialog id="registerDialog"
 						header="Regjistrohu | Ju lutem fusni te dhenat"
 						widgetVar="RegisterDialog" minHeight="40">
-						<h:form styleClass="dialog">
+						<h:form id="registerForm" styleClass="dialog">
+							<p:message id="nameMessage" for="name"></p:message>
+							<p:message id="lastnameMessage" for="lastname"></p:message>
+							<p:message id="emailMessage" for="email"></p:message>
 							<h:panelGrid id="registerPanel" columns="2" cellpadding="10">
 
 								<h:outputLabel value="Emri: "></h:outputLabel>
-								<h:inputText value="#{userBean.newUser.name}"></h:inputText>
+								<p:inputText id="name" value="#{userBean.newUser.name}"
+									required="true" requiredMessage="Duhet plotesuar emri!"></p:inputText>
 
 								<h:outputLabel value="Mbiemri: "></h:outputLabel>
-								<h:inputText value="#{userBean.newUser.lastname}"></h:inputText>
+								<p:inputText id="lastname" value="#{userBean.newUser.lastname}"
+									required="true" requiredMessage="Duhet plotesuar mbiemri!"></p:inputText>
 
 								<h:outputLabel value="Email: "></h:outputLabel>
-								<h:inputText value="#{userBean.newUser.email}"></h:inputText>
+								<p:inputText id="email" value="#{userBean.newUser.email}"
+									required="true"
+									requiredMessage="Emaili nuk mund te lihet bosh!"
+									validatorMessage="Emaili duhet te jete i formes ...@...">
+									<f:validateRegex pattern="(.+@.+\.[a-zA-Z]+)?" />
+								</p:inputText>
 
 								<h:outputLabel value="Password: "></h:outputLabel>
-								<h:inputSecret value="#{userBean.newUser.password}"></h:inputSecret>
+								<p:password value="#{userBean.newUser.password}" required="true"
+									requiredMessage="Duhet plotesuar passwordi!"></p:password>
 
 								<h:outputLabel value="Konfirmimi i Password-it: "></h:outputLabel>
-								<h:inputSecret value="#{userBean.passwordConfirmation}"></h:inputSecret>
+								<p:password value="#{userBean.passwordConfirmation}"
+									required="true" requiredMessage="Duhet konfirmuar passwordi!"></p:password>
 
 							</h:panelGrid>
 
 							<h:panelGrid columns="1">
 								<p:commandButton value="Regjistrohu" styleClass="login"
-									action="#{userBean.Register()}"></p:commandButton>
+									action="#{userBean.Register()}" update="registerForm"></p:commandButton>
 
 								<p:commandLink
 									oncomplete="PF('logInDialog').show(); PF('RegisterDialog').hide();"

@@ -2,8 +2,6 @@ package mcr.dao;
 
 import java.util.List;
 
-import org.hibernate.SessionFactory;
-
 import mcr.model.UserEntity;
 
 public interface UserDAO {
@@ -21,6 +19,4 @@ public interface UserDAO {
 	public void updateUser(UserEntity user);
 	
 	public void deleteUser(UserEntity user);
-
-	public void setSessionFactory(SessionFactory sf);
 }
